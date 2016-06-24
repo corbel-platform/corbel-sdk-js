@@ -2798,9 +2798,7 @@
                     params.callbackExtras.requestCallback(httpReq);
                 }
                 if (params.callbackExtras.progressCallback) {
-                    httpReq.upload.onprogress = function(event) {
-                        params.callbackExtras.progressCallback(event);
-                    };
+                    httpReq.upload.onprogress = params.callbackExtras.progressCallback;
                 }
             }
 
