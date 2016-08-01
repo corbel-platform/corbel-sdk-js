@@ -1,5 +1,5 @@
 {
-  "name": "corbel-js",
+  "name": "corbel-sdk-js",
   "description": "corbel SDK compatible with browser and nodejs",
   "version": "0.6.0",
   "main": "dist/corbel.js",
@@ -31,13 +31,13 @@
     "Cristian del Cerro <@cristiandelcerro>",
     "Alex De Leon <@alexdeleon>"
   ],
-  "homepage": "http://opensource.bq.com/corbel-js/",
+  "homepage": "http://corbel.io/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bq/corbel-js.git"
+    "url": "https://github.com/corbel-platform/corbel-sdk-js.git"
   },
   "bugs": {
-    "url": "https://github.com/bq/corbel-js/issues"
+    "url": "https://github.com/corbel-platform/corbel-sdk-js/issues"
   },
   "directories": {
     "example": "examples",
