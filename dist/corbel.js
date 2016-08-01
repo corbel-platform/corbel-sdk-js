@@ -1813,7 +1813,7 @@
     (function() {
 
         /**
-         * A base object to inherit from for make corbel-js requests with custom behavior.
+         * A base object to inherit from for make corbel-sdk-js requests with custom behavior.
          * @exports Services
          * @namespace
          * @extends corbel.Object

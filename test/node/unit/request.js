@@ -6,7 +6,7 @@ var corbel = require('../../../dist/corbel.js'),
   sinon = require('sinon'),
   stream = require('stream');
 
-describe('corbel-js node', function() {
+describe('corbel-sdk-js node', function() {
 
   var sandbox;
 
@@ -20,7 +20,7 @@ describe('corbel-js node', function() {
     sandbox.restore();
   });
 
-  it('corbel-js contains all modules', function() {
+  it('corbel-sdk-js contains all modules', function() {
     expect(corbel).to.include.keys('request');
   });
 

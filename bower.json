@@ -31,7 +31,7 @@
     "Cristian del Cerro <@cristiandelcerro>",
     "Alex De Leon <@alexdeleon>"
   ],
-  "homepage": "http://corbel.io/",
+  "homepage": "https://corbel-platform.github.io/corbel-sdk-js/",
   "repository": {
     "type": "git",
     "url": "https://github.com/corbel-platform/corbel-sdk-js.git"

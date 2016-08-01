@@ -1,26 +1,26 @@
-corbel-js
+corbel-sdk-js
 =========
 
-[![Stories in Ready](https://badge.waffle.io/bq/corbel-js.png?label=ready&title=Ready)](https://waffle.io/bq/corbel-js)
-[![Build Status](https://travis-ci.org/corbel-platform/corbel-js.svg?branch=master)](https://travis-ci.org/corbel-platform/corbel-js)
-[![npm version](https://badge.fury.io/js/corbel-js.svg)](http://badge.fury.io/js/corbel-js)
-[![Bower version](https://badge.fury.io/bo/corbel-js.svg)](http://badge.fury.io/bo/corbel-js)
-[![Coverage Status](https://coveralls.io/repos/bq/corbel-js/badge.svg?branch=master)](https://coveralls.io/r/bq/corbel-js?branch=master)
-[![Dependency status](https://david-dm.org/corbel-platform/corbel-js/status.png)](https://david-dm.org/corbel-platform/corbel-js#info=dependencies&view=table)
-[![Dev Dependency Status](https://david-dm.org/corbel-platform/corbel-js/dev-status.png)](https://david-dm.org/corbel-platform/corbel-js#info=devDependencies&view=table)
-[![Code Climate](https://codeclimate.com/github/corbel-platform/corbel-js/badges/gpa.svg)](https://codeclimate.com/github/corbel-platform/corbel-js)
-[![Test Coverage](https://codeclimate.com/github/corbel-platform/corbel-js/badges/coverage.svg)](https://codeclimate.com/github/corbel-platform/corbel-js/coverage)
-[![Codacy Badge](https://api.codacy.com/project/badge/grade/295a5a767259422b955c4c8f28158d05)](https://www.codacy.com/app/antai-pt/corbel-js)
+[![Stories in Ready](https://badge.waffle.io/corbel-platform/corbel-sdk-js.png?label=ready&title=Ready)](https://waffle.io/corbel-platform/corbel-sdk-js)
+[![Build Status](https://travis-ci.org/corbel-platform/corbel-sdk-js.svg?branch=master)](https://travis-ci.org/corbel-platform/corbel-sdk-js)
+[![npm version](https://badge.fury.io/js/corbel-sdk-js.svg)](http://badge.fury.io/js/corbel-sdk-js)
+[![Bower version](https://badge.fury.io/bo/corbel-sdk-js.svg)](http://badge.fury.io/bo/corbel-sdk-js)
+[![Coverage Status](https://coveralls.io/repos/corbel-platform/corbel-sdk-js/badge.svg?branch=master)](https://coveralls.io/r/corbel-platform/corbel-sdk-js?branch=master)
+[![Dependency status](https://david-dm.org/corbel-platform/corbel-sdk-js/status.png)](https://david-dm.org/corbel-platform/corbel-sdk-js#info=dependencies&view=table)
+[![Dev Dependency Status](https://david-dm.org/corbel-platform/corbel-sdk-js/dev-status.png)](https://david-dm.org/corbel-platform/corbel-sdk-js#info=devDependencies&view=table)
+[![Code Climate](https://codeclimate.com/github/corbel-platform/corbel-sdk-js/badges/gpa.svg)](https://codeclimate.com/github/corbel-platform/corbel-sdk-js)
+[![Test Coverage](https://codeclimate.com/github/corbel-platform/corbel-sdk-js/badges/coverage.svg)](https://codeclimate.com/github/corbel-platform/corbel-sdk-js/coverage)
+[![Codacy Badge](https://api.codacy.com/project/badge/grade/295a5a767259422b955c4c8f28158d05)](https://www.codacy.com/app/antai-pt/corbel-sdk-js)
 
 A SDK for [corbel][corbel-url] compatible with browsers and node.
 
-## [Homepage](http://opensource.bq.com/corbel-js/)
+## [Homepage](https://corbel-platform.github.io/corbel-sdk-js/)
 
 <!-- MarkdownTOC -->
 
 - Quickstart
   - Installation
-  - What is corbel-js ?
+  - What is corbel-sdk-js ?
   - Usage
     - Instance a new driver
     - Driver options \(with client/secret\)
@@ -52,7 +52,7 @@ A SDK for [corbel][corbel-url] compatible with browsers and node.
 * browser
 
   ```bash
-  bower install corbel-js --save
+  bower install corbel-sdk-js --save
   # for environments without promises support
   bower install es6-promise --save
   ```
@@ -60,14 +60,14 @@ A SDK for [corbel][corbel-url] compatible with browsers and node.
 * node
 
   ```bash
-  npm install corbel-js --save
+  npm install corbel-sdk-js --save
   ```
 
-### What is corbel-js ?
+### What is corbel-sdk-js ?
 
-Corbel-js is a SDK for working with the [Corbel][corbel-url] backend.
+Corbel-sdk-js is a SDK for working with the [Corbel][corbel-url] backend.
 
-Using corbel-js SDK would allow you to :
+Using corbel-sdk-js SDK would allow you to :
 - Create collections and resources
 - CRUD operations for your models
 - Authenticate users
@@ -736,7 +736,7 @@ corbelDriver.assets.asset('all').get();
 
 #### Domains
 
-Corbel-js provides a mechanism for doing requests from a child domain to it's parents by using the `.domain` method.
+Corbel-sdk-js provides a mechanism for doing requests from a child domain to it's parents by using the `.domain` method.
 
 ```javascript
 corbelDriver.domain('myParentDomain').resources.resource /*...*/

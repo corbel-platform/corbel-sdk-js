@@ -9,7 +9,7 @@
 		"default": {
 			"outputSourceFiles" : true
 		},
-		"applicationName": "corbel-js",
+		"applicationName": "corbel-sdk-js",
 		"disqus": "",
 		"googleAnalytics": "",
 		"openGraph": {
@@ -20,8 +20,8 @@
 			"url": ""
 		},
 		"meta": {
-			"title": "corbel-js",
-			"description": "corbel-js Documentation",
+			"title": "corbel-sdk-js",
+			"description": "corbel-sdk-js Documentation",
 			"keyword": "corbel js"
 		}
 	},

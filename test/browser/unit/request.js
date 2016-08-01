@@ -1,6 +1,6 @@
 'use strict';
 
-describe('corbel-js browser', function() {
+describe('corbel-sdk-js browser', function() {
 
   var sandbox;
   this.timeout(4000);
@@ -17,7 +17,7 @@ describe('corbel-js browser', function() {
     fakeServer.restore();
   });
 
-  it('corbel-js contains all modules', function() {
+  it('corbel-sdk-js contains all modules', function() {
     expect(corbel).to.include.keys('request');
   });
 
