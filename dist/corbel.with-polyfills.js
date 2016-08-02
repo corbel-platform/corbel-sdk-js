@@ -1273,7 +1273,7 @@
         };
 
         /**
-         * Translate this full exampe query to a Corbel Compliant QueryString
+         * Translate this full example query to a Corbel Compliant QueryString
          * @param {Object} params
          * @param {Object} params.aggregation
          * @param {Object} params.query
@@ -5231,6 +5231,17 @@
          */
         queryBuilder.elemMatch = function(field, query) {
             this.addCriteria('$elem_match', field, query);
+            return this;
+        };
+
+        /**
+         * Adds a Near criteria to query
+         * @param  {String} field
+         * @param  {JSON} value Query for the matching
+         * @return {RequestParamsBuilder} RequestParamsBuilder
+         */
+        queryBuilder.near = function(field, query) {
+            this.addCriteria('$near', field, query);
             return this;
         };
 
