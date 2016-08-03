@@ -120,7 +120,7 @@
   };
 
   /**
-   * Translate this full exampe query to a Corbel Compliant QueryString
+   * Translate this full example query to a Corbel Compliant QueryString
    * @param {Object} params
    * @param {Object} params.aggregation
    * @param {Object} params.query

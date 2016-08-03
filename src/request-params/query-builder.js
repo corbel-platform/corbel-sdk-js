@@ -118,6 +118,17 @@ var queryBuilder = (function() {
         return this;
     };
 
+        /**
+     * Adds a Near criteria to query
+     * @param  {String} field
+     * @param  {JSON} value Query for the matching
+     * @return {RequestParamsBuilder} RequestParamsBuilder
+     */
+    queryBuilder.near = function(field, query) {
+        this.addCriteria('$near', field, query);
+        return this;
+    };
+
     /**
      * Sets an specific queryDomain, by default 'api'.
      * @param {String} queryDomain query domain name, 'api' and '7digital' supported

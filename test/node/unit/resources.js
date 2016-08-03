@@ -336,10 +336,19 @@ describe('corbel resources module', function() {
             }]
           }
         }, {
+          '$near': {
+            'location': {
+              'coordinates': {
+                'latitude': 46.86,
+                'longitude': 78.92
+              },
+              'maxDistance': 500
+            }
+          }
+        }, {
           '$in': {
             '_dst_id': [
               'books:Book/f44ee834b058d9f383acaece2d44613c'
-
             ]
           }
         }]
@@ -357,7 +366,7 @@ describe('corbel resources module', function() {
       }
     };
 
-    expect(resources.collection('resource:entity').getURL(requestParams)).to.be.equal(TEST_ENDPOINT + 'resource/resource:entity?api:query=' + encodeURIComponent('[{\"$like\":{\"title\":\"Praga\"}},{\"$in\":{\"_dst_id\":[\"books:Book/f44ee834b058d9f383acaece2d44613c\",\"books:Book/9979a1daf7c6eebf04375bd0fc37f3c3\"]}}]') + '&api:query=' + encodeURIComponent('[{\"$elem_match\":{\"authors\":[{\"$like\":{\"name\":\"Praga\"}}]}},{\"$in\":{\"_dst_id\":[\"books:Book/f44ee834b058d9f383acaece2d44613c\"]}}]') + '&api:search=' + encodeURIComponent('{\"text\":\"test\"}') + '&api:distinct=' + encodeURIComponent('text,field1') + '&api:sort=' + encodeURIComponent('{\"field1\":\"asc\"}') + '&api:page=1&api:pageSize=5');
+    expect(resources.collection('resource:entity').getURL(requestParams)).to.be.equal(TEST_ENDPOINT + 'resource/resource:entity?api:query=' + encodeURIComponent('[{\"$like\":{\"title\":\"Praga\"}},{\"$in\":{\"_dst_id\":[\"books:Book/f44ee834b058d9f383acaece2d44613c\",\"books:Book/9979a1daf7c6eebf04375bd0fc37f3c3\"]}}]') + '&api:query=' + encodeURIComponent('[{\"$elem_match\":{\"authors\":[{\"$like\":{\"name\":\"Praga\"}}]}},{\"$near\":{\"location\":{\"coordinates\":{\"latitude\":46.86,\"longitude\":78.92},\"maxDistance\":500}}},{\"$in\":{\"_dst_id\":[\"books:Book/f44ee834b058d9f383acaece2d44613c\"]}}]') + '&api:search=' + encodeURIComponent('{\"text\":\"test\"}') + '&api:distinct=' + encodeURIComponent('text,field1') + '&api:sort=' + encodeURIComponent('{\"field1\":\"asc\"}') + '&api:page=1&api:pageSize=5');
   });
 
   it('resources.collection has mandatory parameters', function() {
