@@ -194,7 +194,8 @@
       request._browserAjax.call(module, params, resolver);
     } else {
       //nodejs
-      request._nodeAjax.call(module, params, resolver);
+      //request._nodeAjax.call(module, params, resolver);
+      throw new Error('NodeJS support is not available on this version');
     }
   }
 
@@ -363,65 +364,6 @@
       form[formPair[0]] = formPair[1];
     });
     return form;
-  };
-
-  request._getNodeRequestAjax = function (params) {
-    var requestAjax = require('request');
-    if (request.isCrossDomain(params.url) && params.withCredentials && params.useCookies) {
-      requestAjax = requestAjax.defaults({
-        jar: true
-      });
-    }
-    return requestAjax;
-  };
-
-  request._getNodeRequestCallback = function (context, params, resolver) {
-    return function (error, response, body) {
-      var responseType;
-      var status;
-      if (error) {
-        responseType = undefined;
-        status = 0;
-      } else {
-        responseType = response.responseType || response.headers['content-type'];
-        status = response.statusCode;
-      }
-
-      processResponse.call(context, {
-        responseObject: response,
-        dataType: params.dataType,
-        responseType: responseType,
-        response: body,
-        status: status,
-        headers: response ? response.headers : {},
-        responseObjectType: 'response',
-        error: error
-      }, resolver, params.callbackSuccess, params.callbackError);
-
-    };
-  };
-
-  request._nodeAjax = function (params, resolver) {
-    var requestAjax = request._getNodeRequestAjax(params);
-
-    var requestOptions = {
-      method: params.method,
-      url: params.url,
-      headers: params.headers,
-    };
-
-    var data = params.data || '';
-
-    var callbackRequest = request._getNodeRequestCallback(this, params, resolver);
-
-    if (corbel.utils.isStream(data)) {
-      data.pipe(requestAjax(requestOptions, callbackRequest));
-    } else {
-      requestOptions.body = data;
-      requestAjax(requestOptions, callbackRequest);
-    }
-
-
   };
 
   /**

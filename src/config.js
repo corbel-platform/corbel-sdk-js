@@ -24,7 +24,7 @@ var processExist = function(){
 
 
 if (typeof module !== 'undefined' && module.exports && processExist() && typeof window === 'undefined' ) {
-    Config.__env__ = process.env.NODE_ENV === 'browser' ? 'browser' : 'node';
+    Config.__env__ = 'browser';//process.env.NODE_ENV === 'browser' ? 'browser' : 'node';
 } else {
     Config.__env__ = 'browser';
 }
