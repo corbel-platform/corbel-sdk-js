@@ -110,6 +110,24 @@
             });
 
             return this.request(args);
+        },
+
+        /**
+         * Checks if the results exists
+         */
+        exists: function() {
+            return this.request({
+                url: this.buildUri(this.type, this.id),
+                method: corbel.request.method.HEAD
+            }).then(function() {
+                return false;
+            }).catch(function(response) {
+                if (response.status === 404) {
+                    return true;
+                } else {
+                    return Promise.reject(response);
+                }
+            });
         }
     });
 
