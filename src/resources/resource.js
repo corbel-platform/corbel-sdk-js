@@ -120,10 +120,10 @@
                 url: this.buildUri(this.type, this.id),
                 method: corbel.request.method.HEAD
             }).then(function() {
-                return false;
+                return true;
             }).catch(function(response) {
                 if (response.status === 404) {
-                    return true;
+                    return false;
                 } else {
                     return Promise.reject(response);
                 }
