@@ -113,7 +113,7 @@
         },
 
         /**
-         * Checks if the results exists
+         * Checks if the resource exists
          */
         exists: function() {
             return this.request({
