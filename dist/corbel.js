@@ -4866,6 +4866,24 @@
                 });
 
                 return this.request(args);
+            },
+
+            /**
+             * Checks if the resource exists
+             */
+            exists: function() {
+                return this.request({
+                    url: this.buildUri(this.type, this.id),
+                    method: corbel.request.method.HEAD
+                }).then(function() {
+                    return true;
+                }).catch(function(response) {
+                    if (response.status === 404) {
+                        return false;
+                    } else {
+                        return Promise.reject(response);
+                    }
+                });
             }
         });
 
