@@ -339,6 +339,23 @@
             });
         },
 
+        /**
+         * Sends a email to the logged user or user to validate his email address
+         * @method
+         * @memberOf iam.UsersBuilder
+         *
+         * @return {Promise}  Q promise that resolves to undefined (void) or rejects with a {@link CorbelError}
+         */
+        _sendValidateEmail: function () {
+            console.log('iamInterface.user.sendValidateEmail');
+            corbel.validate.value('id', this.id);
+
+            return this.request({
+                url: this._buildUriWithDomain(this.uri, this.id) + '/validateEmail',
+                method: corbel.request.method.GET
+            });
+        },
+
         _buildUriWithDomain: corbel.Iam._buildUriWithDomain,
         _getUser: corbel.Iam._getUser,
 
@@ -354,25 +371,25 @@
         delete :function(){
              return this._delete.apply(this, arguments);
         },
-        registerDevice :function(){
+        registerDevice : function(){
              return this._registerDevice.apply(this, arguments);
         },
-        getDevices :function(){
+        getDevices : function(){
              return this._getDevices.apply(this, arguments);
         },
-        getDevice :function(){
+        getDevice : function(){
              return this._getDevice.apply(this, arguments);
         },
-        deleteDevice :function(){
+        deleteDevice : function(){
              return this._deleteDevice.apply(this, arguments);
         },
-        signOut :function(){
+        signOut : function(){
              return this._signOut.apply(this, arguments);
         },
-        disconnect :function(){
+        disconnect : function(){
              return this._disconnect.apply(this, arguments);
         },
-        closeSessions :function(){
+        closeSessions : function(){
              return this._closeSessions.apply(this, arguments);
         },
         getIdentities :function(){
@@ -380,7 +397,10 @@
         },
         getProfile : function(){
              return this._getProfile.apply(this, arguments);
-        }
+        },
+        sendValidateEmail : function(){
+             return this._sendValidateEmail.apply(this, arguments);
+        },
     });
 
     var UserMeBuilder = corbel.Iam.CommonUserBuilder.inherit({
@@ -422,7 +442,10 @@
         },
         getMyProfile : function(){
              return this._getProfile.apply(this, arguments);
-        }
+        },
+        sendMyValidateEmail :function(){
+             return this._sendValidateEmail.apply(this, arguments);
+        },
     });
 
     /**
@@ -439,7 +462,7 @@
         /**
          * Sends a reset password email to the email address recived.
          * @method
-         * @memberOf oauth.UsersBuilder
+         * @memberOf iam.UsersBuilder
          * @param  {string} userEmailToReset The email to send the message
          * @return {Promise}                 Q promise that resolves to undefined (void) or rejects with a {@link corbelError}
          */
@@ -450,6 +473,21 @@
                 url: this._buildUriWithDomain(this.uri + '/resetPassword'),
                 method: corbel.request.method.GET,
                 query: query
+            });
+        },
+
+        /**
+         * Validates the email of a user or the logged user
+         * @method
+         * @memberOf iam.UsersBuilder
+         *
+         * @return {Promise}  Q promise that resolves to undefined (void) or rejects with a {@link CorbelError}
+         */
+        emailConfirmation: function () {
+            console.log('iamInterface.users.emailConfirmation');
+            return this.request({
+                url: this._buildUriWithDomain(this.uri + '/emailConfirmation'),
+                method: corbel.request.method.PUT
             });
         },
 

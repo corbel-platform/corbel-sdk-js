@@ -22,7 +22,7 @@
   'use strict';
   /* jshint unused: false */
 
-  //  @include ../../bower_components/es6-promise/promise.js
+  //  @include ../../bower_components/es6-promise/es6-promise.js
 
   /**
    * corbel namespace

@@ -482,6 +482,27 @@ describe('corbel IAM module', function() {
             expect(callRequestParam.method).to.be.equal('GET');
         });
 
+        it('Generate email confirmation request correctly', function() {
+            corbelDriver.domain(domainId).iam.users().emailConfirmation();
+            var callRequestParam = corbel.request.send.firstCall.args[0];
+            expect(callRequestParam.url).to.be.equal(IAM_END_POINT + domainId + '/user/emailConfirmation');
+            expect(callRequestParam.method).to.be.equal('PUT');
+        });
+
+        it('Send validation email to user logged', function() {
+            corbelDriver.domain(domainId).iam.user('userId').sendValidateEmail();
+            var callRequestParam = corbel.request.send.firstCall.args[0];
+            expect(callRequestParam.url).to.be.equal(IAM_END_POINT + domainId + '/user/userId/validateEmail');
+            expect(callRequestParam.method).to.be.equal('GET');
+        });
+
+        it('Send validation email to me', function() {
+            corbelDriver.domain(domainId).iam.user().sendMyValidateEmail();
+            var callRequestParam = corbel.request.send.firstCall.args[0];
+            expect(callRequestParam.url).to.be.equal(IAM_END_POINT + domainId + '/user/me/validateEmail');
+            expect(callRequestParam.method).to.be.equal('GET');
+        });
+
         describe('Adding user identity', function() {
 
             var domainId = 'test-domain';
