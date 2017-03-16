@@ -1364,7 +1364,11 @@
              * @return {string}
              */
             'form-urlencoded': function(data, cb) {
-                cb(corbel.utils.toURLEncoded(data));
+                if (typeof data === 'object') {
+                    cb(corbel.utils.toURLEncoded(data));
+                } else {
+                    cb(data);
+                }
             },
             /**
              * dataURI serialize handler
@@ -1438,14 +1442,14 @@
              * @return {mixed}
              */
             json: function(data) {
-                data = data || '{}';
-                if (typeof data === 'string') {
-                    data = JSON.parse(data);
+                    data = data || '{}';
+                    if (typeof data === 'string') {
+                        data = JSON.parse(data);
+                    }
+                    return data;
                 }
-                return data;
-            }
-            // 'blob' type do not require any process
-            // @todo: xml
+                // 'blob' type do not require any process
+                // @todo: xml
         };
 
         /**
@@ -1634,13 +1638,13 @@
         };
 
         var encodeUrlToForm = function(url) {
-            var form = {};
+            var form = [];
             url.split('&').forEach(function(formEntry) {
                 var formPair = formEntry.split('=');
                 //value require double encode in Override Method Filter
-                form[formPair[0]] = formPair[1];
+                form.push(formPair[0] + '=' + encodeURIComponent(formPair[1]));
             });
-            return form;
+            return form.join('&');
         };
 
         request._getNodeRequestAjax = function(params) {
