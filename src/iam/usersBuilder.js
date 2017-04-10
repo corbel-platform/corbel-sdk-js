@@ -464,16 +464,18 @@
          * @method
          * @memberOf iam.UsersBuilder
          * @param  {string} userEmailToReset The email to send the message
+         * @param  {Object} options Request options (e.g accessToken) - Optional
          * @return {Promise}                 Q promise that resolves to undefined (void) or rejects with a {@link corbelError}
          */
-        sendResetPasswordEmail: function(userEmailToReset) {
+        sendResetPasswordEmail: function(userEmailToReset, options) {
             console.log('iamInterface.users.sendResetPasswordEmail', userEmailToReset);
             var query = 'email=' + encodeURIComponent(userEmailToReset);
-            return this.request({
+            var args = corbel.utils.extend(options || {}, {
                 url: this._buildUriWithDomain(this.uri + '/resetPassword'),
                 method: corbel.request.method.GET,
                 query: query
             });
+            return this.request(args);
         },
 
         /**
@@ -496,15 +498,17 @@
          * @method
          * @memberOf corbel.Iam.UsersBuilder
          * @param  {Object} data The user data.
+         * @param  {Object} options Request options (e.g accessToken) - Optional
          * @return {Promise}     A promise which resolves into the ID of the created user or fails with a {@link corbelError}.
          */
-        create: function(data) {
+        create: function(data, options) {
             console.log('iamInterface.users.create', data);
-            return this.request({
+            var args = corbel.utils.extend(options || {}, {
                 url: this._buildUriWithDomain(this.uri),
                 method: corbel.request.method.POST,
                 data: data
-            }).then(function(res) {
+            });
+            return this.request(args).then(function(res) {
                 return corbel.Services.getLocationId(res);
             });
         },

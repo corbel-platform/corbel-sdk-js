@@ -328,6 +328,20 @@ describe('corbel IAM module', function() {
 
         it('Create user', function() {
             var username = 'username';
+            var options = {};
+            options.headers = { 'X-Test-Header': 'Test-Header'};
+            corbelDriver.domain(domainId).iam.users().create({
+                username: username
+            }, options);
+            var callRequestParam = corbel.request.send.firstCall.args[0];
+            expect(callRequestParam.url).to.be.equal(IAM_END_POINT + domainId + '/user');
+            expect(callRequestParam.method).to.be.equal('POST');
+            expect(callRequestParam.headers['X-Test-Header']).to.be.equal('Test-Header');            
+            expect(JSON.stringify(callRequestParam.data)).to.be.equal('{"username":"username"}');
+        });
+
+        it('Create user with options', function() {
+            var username = 'username';
             corbelDriver.domain(domainId).iam.users().create({
                 username: username
             });
@@ -480,6 +494,16 @@ describe('corbel IAM module', function() {
             var callRequestParam = corbel.request.send.firstCall.args[0];
             expect(callRequestParam.url).to.be.equal(IAM_END_POINT + domainId + '/user/resetPassword?email=test%40email.com');
             expect(callRequestParam.method).to.be.equal('GET');
+        });
+
+        it('Generate sendResetPasswordEmail request correctly with options', function() {
+            var options = {};
+            options.headers = { 'X-Test-Header': 'Test-Header'};
+            corbelDriver.domain(domainId).iam.users().sendResetPasswordEmail('test@email.com', options);
+            var callRequestParam = corbel.request.send.firstCall.args[0];
+            expect(callRequestParam.url).to.be.equal(IAM_END_POINT + domainId + '/user/resetPassword?email=test%40email.com');
+            expect(callRequestParam.method).to.be.equal('GET');
+            expect(callRequestParam.headers['X-Test-Header']).to.be.equal('Test-Header');
         });
 
         it('Generate email confirmation request correctly', function() {
