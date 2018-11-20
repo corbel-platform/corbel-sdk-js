@@ -4098,6 +4098,10 @@
                         'refresh_token': refreshToken
                     }
                 };
+                try {
+                    /* jshint camelcase:false */
+                    params.claims.device_id = corbel.jwt.decode(refreshToken).deviceId;
+                } catch (e) {}
                 var that = this;
 
                 try {
@@ -4115,6 +4119,7 @@
         });
 
     })();
+
 
     (function() {
 
