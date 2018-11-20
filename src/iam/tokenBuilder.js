@@ -164,6 +164,9 @@
                     'refresh_token': refreshToken
                 }
             };
+            try {
+                params.claims.device_id = corbel.jwt.decode(refreshToken).deviceId;
+            } catch (e) {}
             var that = this;
             
             try {
